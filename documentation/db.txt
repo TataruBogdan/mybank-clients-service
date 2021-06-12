@@ -1,0 +1,68 @@
+
+
+table individual:
+	- id
+	- first_name
+	- last_name
+	- address
+	- birth_date
+	- cnp
+	- id
+	- employer
+	- occupation
+	
+	
+table account_current : 
+	- iban
+	- balance
+	- individual_id
+	- start_date
+	- status(ACTIVE, CLOSED)
+	
+table account_deposit :
+	- iban
+	- deposit_amount
+	- balance
+	- individual_id
+	- maturity
+	- interest_rate
+	- self_capitalization(boolean)
+	- maturaty_iban
+	- start_date
+	- status(ACTIVE, CLOSED)
+	
+	
+table account_loan :
+	- iban
+	- loan_amount
+	- individual_id
+	- period
+	- interest_rate %
+	- interest_return(JSON:   [ {"years": 3, "return_percent": 0.5}, 
+				     {"years": 2, "return_percent": 0.3}, 
+				     {"years": 5, "return_percent": 0.2}]) 
+	- start_date
+	- status(ACTIVE, CLOSED)
+	- principal
+
+table tax :
+	- operation_type(CREATE_ACCOUNT, DEBIT, CREDIT, CLOSE_ACCOUNT, ACCOUNT_MAINTENANCE)
+	- tax_type(FIX_AMOUNT, PERCENT)
+	- amount
+	
+table transaction:
+	- from_iban
+	- from_account_type(CURRENT, DEPOSIT, LOAN)
+	- to_iban
+	- to_account_type(CURRENT, DEPOSIT, LOAN)
+	- transaction_timestamp
+	- status(NEW, APROVED, REJECTED, FINISHED)	
+	
+	
+	
+	
+	
+	
+	
+	
+	
