@@ -1,0 +1,22 @@
+server:
+  port: 8001
+
+logging:
+  level:
+    org.springframework: DEBUG
+
+spring:
+  devtools:
+    add-properties: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mybank
+    username: admin
+    password: password
+  jpa:
+    show-sql: true
+    hibernate:
+      dll-auto: create #create Schema directly for the entities - perform SchemaManagementTools
+  redis:
+    host: localhost
+    port: 6379
+
