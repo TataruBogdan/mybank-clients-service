@@ -1,10 +1,12 @@
 package mybank.clients.service.impl;
 
-import bogdan.learning.mybank.clients.dao.IndividualRepository;
-import bogdan.learning.mybank.clients.dto.IndividualDTO;
-import bogdan.learning.mybank.clients.service.IndividualMapper;
-import bogdan.learning.mybank.clients.service.IndividualService;
 import lombok.RequiredArgsConstructor;
+import mybank.clients.dao.IndividualRepository;
+import mybank.clients.dto.IndividualDTO;
+import mybank.clients.model.Individual;
+import mybank.clients.service.IndividualMapper;
+import mybank.clients.service.IndividualService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +17,10 @@ import java.util.stream.Collectors;
 @Service
 public class IndividualServiceImpl implements IndividualService {
 
-
+    @Autowired
     private final IndividualRepository individualRepository;
 
+    @Autowired
     private final IndividualMapper individualMapper;
 
 
@@ -33,6 +36,32 @@ public class IndividualServiceImpl implements IndividualService {
     public Optional<IndividualDTO> getById(int id) {
         return individualRepository.findById(id).map(individual -> individualMapper.toDTO(individual));
     }
+
+    @Override
+    public void deleteById(int id) {
+        individualRepository.deleteById(id);
+    }
+
+    @Override
+    public void save(IndividualDTO individualDTO) {
+
+        Individual individual = individualMapper.toIndividual(individualDTO);
+        Individual savedIndividual = individualRepository.save(individual);
+        individualMapper.toDTO(savedIndividual);
+
+    }
+
+    @Override
+    public Optional<IndividualDTO> update(int id, IndividualDTO individualDTO) {
+        Individual newIndividual = individualMapper.toIndividual(individualDTO);
+        Individual saveIndividual = individualRepository.save(newIndividual);
+
+        IndividualDTO updatedIndividualDTO = individualMapper.toDTO(saveIndividual);
+        return Optional.of(updatedIndividualDTO);
+    }
+
+
+
 
 
 /*    @Deprecated

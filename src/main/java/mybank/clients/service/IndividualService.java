@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface IndividualService {
     List<IndividualDTO> getAll();
     Optional<IndividualDTO> getById(int id);
+    void deleteById(int id);
+    void save(IndividualDTO individualDTO);
+    Optional<IndividualDTO> update (int id, IndividualDTO individualDTO);
 }
