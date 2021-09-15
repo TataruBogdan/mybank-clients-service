@@ -1,6 +1,6 @@
-package bogdan.learning.mybank.clients.service;
+package mybank.clients.service;
 
-import bogdan.learning.mybank.clients.dto.IndividualDTO;
+import mybank.clients.dto.IndividualDTO;
 
 import java.util.List;
 import java.util.Optional;

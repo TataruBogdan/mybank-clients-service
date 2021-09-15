@@ -1,4 +1,4 @@
-package bogdan.learning.mybank.clients.service.impl;
+package mybank.clients.service.impl;
 
 import bogdan.learning.mybank.clients.dao.IndividualRepository;
 import bogdan.learning.mybank.clients.dto.IndividualDTO;

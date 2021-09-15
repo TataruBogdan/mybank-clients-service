@@ -1,6 +1,3 @@
--- child table to parent individual - one individual to many account_deposit
-
-CREATE TYPE account_deposit_status AS ENUM('ACTIVE', ' CLOSED');
 
 CREATE TABLE account_deposit(
     iban text PRIMARY KEY,
@@ -12,8 +9,7 @@ CREATE TABLE account_deposit(
     self_capitalization BOOLEAN,
     maturity_iban text,
     start_date date,
-    status account_deposit_status,
-    FOREIGN KEY(individual_id) REFERENCES individual(id_serial),
+    status account_deposit_status
 
 );
 

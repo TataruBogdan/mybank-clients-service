@@ -1,4 +1,6 @@
-logging:
+server:
+  port: 8100
+
   level:
     org.springframework: DEBUG
 
@@ -6,7 +8,7 @@ spring:
   devtools:
     add-properties: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/mybank
+    url: jdbc:postgresql://localhost:5432/individuals
     username: admin
     password: password
   jpa:
@@ -14,3 +16,4 @@ spring:
   redis:
     host: localhost
     port: 6379
+

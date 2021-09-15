@@ -1,7 +1,7 @@
-package bogdan.learning.mybank.clients.rest;
+package mybank.clients.rest;
 
-import bogdan.learning.mybank.clients.dto.IndividualDTO;
-import bogdan.learning.mybank.clients.service.IndividualService;
+import mybank.clients.dto.IndividualDTO;
+import mybank.clients.service.IndividualService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

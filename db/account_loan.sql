@@ -1,8 +1,5 @@
--- child table to parent individual - one individual to many account_loan
-CREATE TYPE account_loan_status AS ENUM('ACTIVE', ' CLOSED');
 
 DROP TABLE IF EXISTS account_loan;
-
 
 CREATE TABLE account_loan (
     iban text PRIMARY KEY,
@@ -13,6 +10,5 @@ CREATE TABLE account_loan (
 	interest_return text,
 	start_date DATE,
 	status account_loan_status,
-	principal NUMERIC(10,2),
-    FOREIGN KEY(individual_id) REFERENCES individual(id)
+	principal NUMERIC(10,2)
 );

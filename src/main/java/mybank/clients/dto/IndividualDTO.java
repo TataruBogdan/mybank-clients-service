@@ -1,4 +1,4 @@
-package bogdan.learning.mybank.clients.dto;
+package mybank.clients.dto;
 
 import lombok.Data;
 

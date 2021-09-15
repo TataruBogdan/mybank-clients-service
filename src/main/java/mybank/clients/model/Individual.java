@@ -1,4 +1,4 @@
-package bogdan.learning.mybank.clients.model;
+package mybank.clients.model;
 
 import lombok.Data;
 
