@@ -5,7 +5,6 @@ import mybank.clients.dto.IndividualDTO;
 import mybank.clients.service.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/individual_id", produces = MediaType.APPLICATION_JSON_VALUE)
+//@RequestMapping(value = "/individual_id", produces = MediaType.APPLICATION_JSON_VALUE)
 public class IndividualController {
 
     @Autowired
@@ -39,11 +38,11 @@ public class IndividualController {
         }
     }
 
-    @DeleteMapping("/individual/{id}")
-    public ResponseEntity<IndividualDTO> deleteIndividual(@PathVariable int id){
+    @RequestMapping(value = "/individual/{id}", method = RequestMethod.DELETE)
+    public void deleteIndividual(@PathVariable int id){
 
-        individualService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+            individualService.deleteById(id);
+
     }
 
 
@@ -60,7 +59,7 @@ public class IndividualController {
         Optional<IndividualDTO> retrievedIndividual = individualService.getById(id);
 
         if (retrievedIndividual.isPresent()){
-            individualService.update(id, individualDTO);
+            individualService.update(individualDTO);
             return ResponseEntity.ok(retrievedIndividual.get());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(individualDTO);

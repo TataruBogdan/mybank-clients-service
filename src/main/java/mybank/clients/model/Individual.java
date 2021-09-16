@@ -1,22 +1,19 @@
 package mybank.clients.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "individual")
 public class Individual {
 
     @Id
-    @NotNull
+//    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     private Integer id;
@@ -41,6 +38,7 @@ public class Individual {
     private String emailAddress;
 
     @Column
+    //@Pattern(regexp = "^[0-9]{13}$", message = "Please provide 13 cyphers")
     private String cnp;
 
     @Column
@@ -49,4 +47,16 @@ public class Individual {
     @Column
     private String occupation;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        String oCnp = ((Individual) o).getCnp();
+        return this.cnp.equals(oCnp);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.cnp.hashCode() + 57;
+    }
 }

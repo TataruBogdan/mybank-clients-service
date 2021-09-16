@@ -10,5 +10,6 @@ public interface IndividualService {
     Optional<IndividualDTO> getById(int id);
     void deleteById(int id);
     void save(IndividualDTO individualDTO);
-    Optional<IndividualDTO> update (int id, IndividualDTO individualDTO);
+    Optional<IndividualDTO> update (IndividualDTO individualDTO);
+
 }

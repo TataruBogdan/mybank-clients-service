@@ -39,6 +39,7 @@ public class IndividualServiceImpl implements IndividualService {
 
     @Override
     public void deleteById(int id) {
+
         individualRepository.deleteById(id);
     }
 
@@ -52,13 +53,16 @@ public class IndividualServiceImpl implements IndividualService {
     }
 
     @Override
-    public Optional<IndividualDTO> update(int id, IndividualDTO individualDTO) {
+    public Optional<IndividualDTO> update(IndividualDTO individualDTO) {
         Individual newIndividual = individualMapper.toIndividual(individualDTO);
         Individual saveIndividual = individualRepository.save(newIndividual);
 
         IndividualDTO updatedIndividualDTO = individualMapper.toDTO(saveIndividual);
         return Optional.of(updatedIndividualDTO);
     }
+
+
+
 
 
 
