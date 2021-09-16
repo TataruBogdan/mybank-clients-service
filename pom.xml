@@ -87,6 +87,12 @@
             <artifactId>xml-apis</artifactId>
             <version>1.3.04</version>
         </dependency>
+
+		<dependency>
+			<groupId>com.mybank</groupId>
+			<artifactId>mybank-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
     </dependencies>
 
 

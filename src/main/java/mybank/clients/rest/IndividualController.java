@@ -1,7 +1,7 @@
 package mybank.clients.rest;
 
+import banking.clients.dto.IndividualDTO;
 import lombok.RequiredArgsConstructor;
-import mybank.clients.dto.IndividualDTO;
 import mybank.clients.service.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +38,7 @@ public class IndividualController {
         }
     }
 
+    //TODO  NOT WORKING ! -- ERROR
     @RequestMapping(value = "/individual/{id}", method = RequestMethod.DELETE)
     public void deleteIndividual(@PathVariable int id){
 

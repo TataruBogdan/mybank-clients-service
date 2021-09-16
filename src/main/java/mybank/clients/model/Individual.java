@@ -1,6 +1,7 @@
 package mybank.clients.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -38,7 +39,7 @@ public class Individual {
     private String emailAddress;
 
     @Column
-    //@Pattern(regexp = "^[0-9]{13}$", message = "Please provide 13 cyphers")
+
     private String cnp;
 
     @Column
@@ -46,6 +47,7 @@ public class Individual {
 
     @Column
     private String occupation;
+
 
     @Override
     public boolean equals(Object o) {

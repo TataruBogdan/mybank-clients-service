@@ -1,8 +1,8 @@
 package mybank.clients.service.impl;
 
+import banking.clients.dto.IndividualDTO;
 import lombok.RequiredArgsConstructor;
 import mybank.clients.dao.IndividualRepository;
-import mybank.clients.dto.IndividualDTO;
 import mybank.clients.model.Individual;
 import mybank.clients.service.IndividualMapper;
 import mybank.clients.service.IndividualService;
