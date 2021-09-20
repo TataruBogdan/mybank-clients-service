@@ -1,6 +1,6 @@
 package mybank.clients.rest;
 
-import banking.clients.dto.IndividualDTO;
+import banking.commons.dto.IndividualDTO;
 import lombok.RequiredArgsConstructor;
 import mybank.clients.service.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class IndividualController {
     }
 
     @GetMapping("/individuals/{id}")
-    public ResponseEntity<IndividualDTO> retrieveIndividual(@PathVariable int id) throws Exception {
+    public ResponseEntity<IndividualDTO> getById(@PathVariable int id) throws Exception {
 
         Optional<IndividualDTO> individualRepositoryById = individualService.getById(id);
 
@@ -50,7 +50,7 @@ public class IndividualController {
     @PostMapping("/individuals")
     public ResponseEntity<IndividualDTO> create (@RequestBody IndividualDTO individualDTO){
 
-        individualService.save(individualDTO);
+        individualService.saveIndividual(individualDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(individualDTO);
     }
 

@@ -1,6 +1,6 @@
 package mybank.clients.service.impl;
 
-import banking.clients.dto.IndividualDTO;
+import banking.commons.dto.IndividualDTO;
 import lombok.RequiredArgsConstructor;
 import mybank.clients.dao.IndividualRepository;
 import mybank.clients.model.Individual;
@@ -44,7 +44,7 @@ public class IndividualServiceImpl implements IndividualService {
     }
 
     @Override
-    public void save(IndividualDTO individualDTO) {
+    public void saveIndividual(IndividualDTO individualDTO) {
 
         Individual individual = individualMapper.toIndividual(individualDTO);
         Individual savedIndividual = individualRepository.save(individual);

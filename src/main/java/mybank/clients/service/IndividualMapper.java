@@ -1,6 +1,6 @@
 package mybank.clients.service;
 
-import banking.clients.dto.IndividualDTO;
+import banking.commons.dto.IndividualDTO;
 import mybank.clients.model.Individual;
 import org.mapstruct.Mapper;
 
