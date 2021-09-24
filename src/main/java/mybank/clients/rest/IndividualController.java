@@ -39,13 +39,12 @@ public class IndividualController {
     }
 
     //TODO  NOT WORKING ! -- ERROR
-    @RequestMapping(value = "/individual/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/individual/{id}")
     public void deleteIndividual(@PathVariable int id){
 
             individualService.deleteById(id);
 
     }
-
 
     @PostMapping("/individuals")
     public ResponseEntity<IndividualDTO> create (@RequestBody IndividualDTO individualDTO){
@@ -60,8 +59,8 @@ public class IndividualController {
         Optional<IndividualDTO> retrievedIndividual = individualService.getById(id);
 
         if (retrievedIndividual.isPresent()){
-            individualService.update(individualDTO);
-            return ResponseEntity.ok(retrievedIndividual.get());
+            Optional<IndividualDTO> updatedIndividualDTO = individualService.update(individualDTO);
+            return ResponseEntity.ok(updatedIndividualDTO.get());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(individualDTO);
         }
