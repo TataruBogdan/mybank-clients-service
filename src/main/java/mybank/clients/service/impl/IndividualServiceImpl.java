@@ -62,20 +62,12 @@ public class IndividualServiceImpl implements IndividualService {
     }
 
 
-
-
-
-
-
-
 /*    @Deprecated
     private IndividualDTO convert(Individual individual){
 
         IndividualDTO individualDTO = new IndividualDTO();
 
         //Mappers.getMapper(IndividualDTO.class);
-
-
 
 //        individualDTO.setId(individual.getId());
 //        individualDTO.setFirstName(individual.getFirstName());

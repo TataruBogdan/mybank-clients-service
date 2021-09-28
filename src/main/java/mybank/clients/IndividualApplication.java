@@ -16,6 +16,8 @@ public class IndividualApplication implements CommandLineRunner {
 	@Autowired
 	private IndividualRepository individualRepository;
 
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(IndividualApplication.class, args);
 	}
