@@ -21,17 +21,21 @@ class IndividualServiceImplTest{
 
     @Test
     void getById() {
+        fail("Not yet implemented");
     }
 
     @Test
     void deleteById() {
+        fail("Not yet implemented");
     }
 
     @Test
     void saveIndividual() {
+        fail("Not yet implemented");
     }
 
     @Test
     void update() {
+        fail("Not yet implemented");
     }
 }
