@@ -22,11 +22,13 @@ public class IndividualController {
 
     @GetMapping("/individuals")
     public List<IndividualDTO> retrieveAllIndividual(){
-        return individualService.getAll();
+        List<IndividualDTO> allIndividuals = individualService.getAll();
+
+        return allIndividuals;
     }
 
     @GetMapping("/individuals/{id}")
-    public ResponseEntity<IndividualDTO> getById(@PathVariable int id) throws Exception {
+    public ResponseEntity<IndividualDTO> getById(@PathVariable int id) {
 
         Optional<IndividualDTO> individualRepositoryById = individualService.getById(id);
 
@@ -40,9 +42,7 @@ public class IndividualController {
     //TODO  NOT WORKING ! -- ERROR
     @DeleteMapping(value = "/individual/{id}")
     public void deleteIndividual(@PathVariable int id){
-
             individualService.deleteById(id);
-
     }
 
     @PostMapping("/individuals")

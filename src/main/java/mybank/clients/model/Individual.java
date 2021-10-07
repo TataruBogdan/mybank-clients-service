@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
@@ -14,7 +16,6 @@ import java.util.Date;
 public class Individual {
 
     @Id
-//    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
     private Integer id;
@@ -36,10 +37,11 @@ public class Individual {
 
 
     @Column(name = "email_address")
+    @Email(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
     private String emailAddress;
 
     @Column
-
+    @Pattern(regexp = "^[0-9]{13}$", message = "Please provide 13 cyphers")
     private String cnp;
 
     @Column
