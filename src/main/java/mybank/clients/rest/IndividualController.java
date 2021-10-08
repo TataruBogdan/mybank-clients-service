@@ -46,7 +46,7 @@ public class IndividualController {
     }
 
     @PostMapping("/individuals")
-    public ResponseEntity<IndividualDTO> create (@RequestBody IndividualDTO individualDTO){
+    public ResponseEntity<IndividualDTO> create (@RequestBody @Validated IndividualDTO individualDTO){
 
         individualService.saveIndividual(individualDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(individualDTO);
@@ -64,7 +64,4 @@ public class IndividualController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(individualDTO);
         }
     }
-
-
-
 }
