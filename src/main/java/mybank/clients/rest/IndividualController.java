@@ -19,7 +19,6 @@ public class IndividualController {
     @Autowired
     private final IndividualService individualService;
 
-
     @GetMapping("/individuals")
     public List<IndividualDTO> retrieveAllIndividual(){
         List<IndividualDTO> allIndividuals = individualService.getAll();
@@ -39,7 +38,6 @@ public class IndividualController {
         }
     }
 
-    //TODO  NOT WORKING ! -- ERROR
     @DeleteMapping(value = "/individual/{id}")
     public void deleteIndividual(@PathVariable int id){
             individualService.deleteById(id);
