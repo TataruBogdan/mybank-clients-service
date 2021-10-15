@@ -1,9 +1,5 @@
 
 
-
-
-
-
 CREATE SEQUENCE individual_id_seq;
 ALTER TABLE individual ALTER COLUMN id SET DEFAULT nextval('individual_id_seq');
 ALTER TABLE individual ALTER COLUMN id SET NOT NULL;
