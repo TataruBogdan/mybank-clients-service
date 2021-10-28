@@ -16,6 +16,18 @@ CREATE TABLE account_current(
 );
 
 
+CREATE TABLE account_current(
+    iban text PRIMARY KEY,
+    account_type text,
+	balance NUMERIC(10,2) NOT NULL DEFAULT 0,
+	individual_id int,
+	start_date date,
+	account_current_status text,
+	primary_account boolean,
+	FOREIGN KEY(individual_id) REFERENCES individual(id)
+);
+
+
 
 
 

@@ -6,12 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MybankApplication {
+public class ClientsApplication {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public static void main(String[] args) {
-		SpringApplication.run(MybankApplication.class, args);
+		SpringApplication.run(ClientsApplication.class, args);
 	}
 
 }

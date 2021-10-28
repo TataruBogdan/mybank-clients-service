@@ -12,6 +12,4 @@ CREATE TABLE individual_account(
     account_type account_type,
     FOREIGN KEY(individual_id) REFERENCES individual(id),
     FOREIGN KEY(account_id) REFERENCE account_current
-
-
 );
