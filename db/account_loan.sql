@@ -8,11 +8,11 @@ CREATE TABLE account_loan (
     iban text PRIMARY KEY,
     loan_amount NUMERIC(10,2) NOT NULL DEFAULT 0,
     individual_id int,
-	period INTERVAL YEAR,
+	period date,
 	interest_rate DECIMAL(3,2),
 	interest_return text,
 	start_date DATE,
-	status account_loan_status,
+	account_loan_status text,
 	principal NUMERIC(10,2),
     FOREIGN KEY(individual_id) REFERENCES individual(id)
 );

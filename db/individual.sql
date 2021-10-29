@@ -1,7 +1,7 @@
 
 
 CREATE TABLE individual(
-    id_serial text primary key,
+    id int primary key,
     first_name text,
     last_name  text,
     address text,

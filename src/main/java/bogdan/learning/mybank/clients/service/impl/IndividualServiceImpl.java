@@ -1,11 +1,13 @@
 package bogdan.learning.mybank.clients.service.impl;
 
+import banking.commons.dto.IndividualDTO;
 import bogdan.learning.mybank.clients.dao.IndividualRepository;
-import bogdan.learning.mybank.clients.dto.IndividualDTO;
+import bogdan.learning.mybank.clients.model.Individual;
 import bogdan.learning.mybank.clients.service.IndividualMapper;
 import bogdan.learning.mybank.clients.service.IndividualService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +34,36 @@ public class IndividualServiceImpl implements IndividualService {
     @Override
     public Optional<IndividualDTO> getById(int id) {
         return individualRepository.findById(id).map(individual -> individualMapper.toDTO(individual));
+    }
+
+    @Override
+    public void deleteById(int id) {
+
+        individualRepository.deleteById(id);
+    }
+
+    @Override
+    public void save(IndividualDTO individualDTO) {
+
+        // transform individualDTO into individual
+        Individual individual = individualMapper.toIndividual(individualDTO);
+        //save into repository individual
+        Individual savedIndividual = individualRepository.save(individual);
+        //return to individualDTO
+        individualMapper.toDTO(savedIndividual);
+
+    }
+
+    @Override
+    public Optional<IndividualDTO> update(int id, IndividualDTO individualDTO) {
+        Optional<Individual> updatedIndividual = individualRepository
+                .findById(id)
+                .map(individual -> individualMapper.toIndividual(individualDTO));
+        individualRepository.save(updatedIndividual.get());
+
+        IndividualDTO updatedIndividualDTO = individualMapper.toDTO(updatedIndividual.get());
+
+        return Optional.of(updatedIndividualDTO);
     }
 
 

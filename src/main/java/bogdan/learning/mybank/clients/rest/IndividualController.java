@@ -1,13 +1,15 @@
 package bogdan.learning.mybank.clients.rest;
 
-import bogdan.learning.mybank.clients.dto.IndividualDTO;
+import banking.commons.dto.IndividualDTO;
+import bogdan.learning.mybank.clients.model.Individual;
 import bogdan.learning.mybank.clients.service.IndividualService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,6 @@ public class IndividualController {
 
     private final IndividualService individualService;
 
-    // Viorel - return a new ArrayList<>(individualService) ?
     @GetMapping("/individuals")
     public List<IndividualDTO> retrieveAllIndividual(){
         return individualService.getAll();
@@ -34,6 +35,41 @@ public class IndividualController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/individuals/{id}")
+    public void deleteIndividual(@PathVariable int id) {
+
+        individualService.deleteById(id);
+
+    }
+
+    @PostMapping("/individual")
+    public ResponseEntity<IndividualDTO> create(@Valid @RequestBody IndividualDTO individualDTO) {
+
+        Optional<IndividualDTO> foundIndividual = individualService.getById(individualDTO.getId());
+
+        if (foundIndividual.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(individualDTO);
+        } else {
+            individualService.save(individualDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(individualDTO);
+        }
+    }
+
+    public ResponseEntity<IndividualDTO> updateIndividual(@PathVariable @Valid int id, @RequestBody @Validated IndividualDTO individualDTO) {
+
+        Optional<IndividualDTO> updatedIndividual = individualService.getById(individualDTO.getId());
+
+        if (updatedIndividual.isPresent()) {
+            individualService.update(id, individualDTO);
+            return ResponseEntity.ok(updatedIndividual.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(individualDTO);
+        }
+
+    }
+
+
 
 
 

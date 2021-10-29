@@ -4,8 +4,8 @@ CREATE TYPE tax_operation_type AS ENUM ('CREATE_ACCOUNT', 'DEBIT', 'CLOSE_ACCOUN
 CREATE TYPE tax_type AS ENUM('FIX_AMOUNT', ' PERCENT');
 
 CREATE TABLE tax (
-    operation tax_operation_type,
-    type tax_type,
+    tax_operation_type text,
+    tax_type text,
     amount NUMERIC(10,2) NOT NULL DEFAULT 0
 );
 

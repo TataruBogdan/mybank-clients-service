@@ -12,8 +12,7 @@ CREATE TABLE account_deposit(
     self_capitalization BOOLEAN,
     maturity_iban text,
     start_date date,
-    status account_deposit_status,
-    FOREIGN KEY(individual_id) REFERENCES individual(id_serial),
-
+    account_deposit_status text,
+    FOREIGN KEY(individual_id) REFERENCES individual(id)
 );
 
